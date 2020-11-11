@@ -1,0 +1,32 @@
+Node.js is a JS Runtime, you can use it for more than just Server-side Code.
+Utility Scripts, Build Tools,...
+
+Node.js's Role (in Web Dev)
+- Run Server: create Server&Listen to Incoming requests
+- Business Logic: handle requests, validate input, connect to DB
+- Responses: Return Responses (Rendered HTML, JSON,...)
+
+The REPL:
+- Read -> Read User Input
+- Eval -> Evaluate User Input
+- Print -> Print Output (Result)
+- Loop -> Wait for new Input
+
+Node.js Program Lifecycle:
+- Start Script
+- Parse Code, Register Variables and Functions 
+- Event Loop -> Keeps on running as long as there are event listeners registered. 
+
+>>>>What is the relationship between Node.js and V8?
+V8 is the JS engine inside of node.js that parses and run your JS. 
+The same V8 engine is used inside of Chrome to run javascript in the Chrome browser. 
+Google open-sourced the V8 engine and the builders of node.js used it to run Javascript in node.js.
+
+>>>>Can Node.js work without V8?
+No. The current node.js binary cannot work without V8. 
+It would have no Javascript engine and thus no ability to run code which would obviously render it non-functional. 
+Node.js was not designed to run with any other Javascript engine and, in fact, all the native code bindings that come with node.js (such as the fs module or the net module) all rely on the specific V8 interface between C++ and Javascript.
+
+There is an effort by Microsoft to allow the Chakra Javascript engine (that's the engine in Edge) to be used with node.js. 
+They build a V8 shim on top of Chakra so that the node.js binary code that expects to be talking to V8 can continue to do what it was doing, but actually end up talking to the Chakra engine underneath. 
+From what I've read this is particularly targeted at Microsoft platforms that already have the Chakra engine and do not have the V8 engine running on them, though presumably you could use it on Windows too.
